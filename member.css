@@ -1,0 +1,496 @@
+.team{
+
+    width:100%;
+    height:calc(100vh - 20px);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:90px;
+}
+
+.member{
+
+    text-align:center;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.member img{
+
+    width:300px;
+    height:300px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:8px solid white;
+
+    transition:.4s;
+}
+
+.member:hover{
+
+    transform:translateY(-10px);
+}
+
+.member:hover img{
+
+    transform:scale(1.08);
+
+    box-shadow:
+
+        0 0 25px #d8b36d,
+        0 0 50px rgba(216,179,109,.6);
+}
+
+.member h3{
+
+    color:#E7D1A3;
+
+    margin-top:20px;
+
+    font-size:32px;
+}
+
+.member p{
+
+    color:white;
+
+    font-size:24px;
+}
+
+
+
+
+
+@keyframes pop{
+
+0%{
+
+transform:scale(.6);
+
+opacity:0;
+
+}
+
+100%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
+
+
+
+.portfolio-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0,0,0,.72);
+
+    backdrop-filter: blur(5px);
+
+    z-index: 2000;
+
+    padding: 40px;
+
+    
+}
+
+
+/* 開啟 */
+
+.portfolio-modal.show {
+
+    display: flex;
+
+    animation: modalFade .45s ease;
+}
+
+
+/* =========================
+   作品集主視窗
+========================= */
+
+.portfolio-window {
+
+    position: relative;
+
+    width: min(1400px, 92vw);
+
+    height: min(800px, calc(100vh - 60px));
+
+    padding: 35px 50px;
+
+    border-radius: 45px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(35,35,35,.88),
+            rgba(15,15,15,.82)
+        );
+
+    border:
+        1px solid rgba(220,190,130,.18);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.65),
+        inset 0 0 50px rgba(255,255,255,.025);
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* =========================
+   作品集標題
+========================= */
+
+.portfolio-window > h1 {
+
+    margin: 0 0 25px;
+
+    text-align: center;
+
+    font-family: "zhuque", serif;
+
+    font-size: clamp(48px, 5vw, 78px);
+
+    font-weight: normal;
+
+    color: #f5eee5;
+
+    letter-spacing: 8px;
+
+}
+
+
+/* =========================
+   左右內容
+========================= */
+
+.portfolio-content {
+
+    display: grid;
+
+    grid-template-columns: 300px minmax(0, 1fr);
+
+    gap: 45px;
+
+    flex: 1;
+
+    min-height: 0;
+
+    overflow: hidden;
+
+    align-items: start;
+}
+
+
+/* =========================
+   左邊人物
+========================= */
+
+.portfolio-profile {
+
+    text-align: center;
+
+    padding-top: 10px;
+}
+
+
+.portfolio-profile > img {
+
+    width: 285px;
+
+    height: 285px;
+
+    object-fit: cover;
+
+    border-radius: 35px;
+
+    display: block;
+
+    margin: 0 auto 15px;
+
+}
+
+
+/* 姓名 */
+
+.portfolio-profile h2 {
+
+    margin: 0;
+
+    font-size: 42px;
+
+    font-weight: normal;
+
+    color: #fff;
+
+}
+
+
+/* 負責 */
+
+.portfolio-info {
+
+    margin-top: 12px;
+
+    text-align: left;
+
+    padding-left: 30px;
+
+    color: #eee;
+
+}
+
+
+.portfolio-info strong {
+
+    font-size: 25px;
+
+    font-weight: normal;
+
+}
+
+
+.portfolio-info p {
+
+    margin: 4px 0;
+
+    font-size: 24px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================
+   IG
+========================= */
+
+.portfolio-social {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+
+    margin-top: 25px;
+
+    font-size: 22px;
+
+}
+
+
+.portfolio-social span:first-child {
+
+    font-size: 45px;
+
+    color: #e35c65;
+
+}
+
+.portfolio-social svg {
+
+    width: 45px;
+
+    height: 45px;
+
+    fill: #e35c65;
+
+}
+
+
+/* =========================
+   右邊作品
+========================= */
+
+.portfolio-works {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    grid-template-rows:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+
+    width: 100%;
+    height: 100%;
+
+    min-width: 0;
+    min-height: 0;
+
+    overflow: hidden;
+}
+
+/* 每張作品 */
+
+.portfolio-work {
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    background: transparent;
+
+}
+
+
+/* 圖片 */
+
+.portfolio-work img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    background: transparent;
+
+    transition:
+        transform .4s ease,
+        filter .4s ease;
+
+}
+
+
+/* Hover */
+
+.portfolio-work:hover img {
+
+    transform: scale(1.06);
+
+    filter:
+        brightness(1.08);
+}
+
+
+/* =========================
+   關閉按鈕
+========================= */
+
+.portfolio-close {
+
+    position: absolute;
+
+    right: 28px;
+
+    top: 20px;
+
+    width: 45px;
+
+    height: 45px;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #e8c988;
+
+    font-size: 42px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    transition:
+        transform .25s ease,
+        color .25s ease;
+}
+
+
+.portfolio-close:hover {
+
+    color: #fff;
+
+    transform: rotate(90deg);
+}
+
+
+/* =========================
+   動畫
+========================= */
+
+@keyframes modalFade {
+
+    from {
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
+
+}
+
+
+@keyframes portfolioIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.92)
+            translateY(30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+    }
+
+}
+
+
+.portfolio-modal.show
+.portfolio-window {
+
+    animation:
+        portfolioIn .5s
+        cubic-bezier(.2,.8,.2,1);
+}
